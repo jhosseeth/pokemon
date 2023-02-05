@@ -1,6 +1,7 @@
 <script setup>
-    import { ref, computed, onMounted } from 'vue'
+    import { ref, onMounted } from 'vue'
     import pokeApi from '../services/PokeAPI'
+    import Search from '../components/Search.vue'
 
     const pokemons = ref([])
     const loading = ref(false)
@@ -25,6 +26,7 @@
 
 <template>
     <main ref="content" @scroll="loadMore">
+        <Search />
         <ul>
             <li v-for="pokemon in pokemons">
                 <img :src="pokemon.img">

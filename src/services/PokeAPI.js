@@ -2,6 +2,7 @@ import axios from 'axios'
 
 const pokeAPI = {
 	nextPokemons: '',
+	// Returns a single pokemon object
 	getPokemon(url) {
 		return new Promise((resolve, reject) => {
 			axios.get(url).then(({ data }) => {
@@ -14,8 +15,8 @@ const pokeAPI = {
 			})
 		})
 	},
+	// Returns a list with object pokemons data
 	getPokemons(url = 'https://pokeapi.co/api/v2/pokemon') {
-		console.log('getPokemons => ', url)
 		return new Promise((resolve, reject) => {
 			axios.get(url)
 		    .then(async ({ data }) => {
@@ -29,7 +30,29 @@ const pokeAPI = {
 		        reject(error)
 		    })
 		})
-	}
+	},
+	// Return a list with all pokemon names
+	getPokemonNames() {
+		return new Promise((resolve, reject) => {
+			axios.get('https://pokeapi.co/api/v2/pokemon?limit=1300&offset=0')
+		    .then(({ data }) => {
+		    	const names = data.results.map(pokemon => pokemon.name)
+		        resolve(names)
+		    })
+		    .catch(function (error) {
+		        console.error(error)
+		        reject(error)
+		    })
+		})
+	},
+	// Return a object list of specific pokemons
+	searchPokemons(names = []) {
+		return new Promise(async (resolve, reject) => {
+			console.log('names: ', names)
+			const pokemons = names.map(async name => await this.getPokemon(`https://pokeapi.co/api/v2/pokemon/${name}`))
+			resolve(await Promise.all(pokemons))
+		})
+	},
 }
 
 export default pokeAPI
