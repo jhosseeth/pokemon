@@ -19,6 +19,10 @@
         }
     }
 
+    const updatePokemons = data => {
+        pokemons.value = data
+    }
+
     onMounted(async () => {
         pokemons.value = await pokeApi.getPokemons()
     })
@@ -26,7 +30,8 @@
 
 <template>
     <main ref="content" @scroll="loadMore">
-        <Search />
+        <Search @updatePokemons="updatePokemons"/>
+
         <ul>
             <li v-for="pokemon in pokemons">
                 <img :src="pokemon.img">

@@ -48,7 +48,6 @@ const pokeAPI = {
 	// Return a object list of specific pokemons
 	searchPokemons(names = []) {
 		return new Promise(async (resolve, reject) => {
-			console.log('names: ', names)
 			const pokemons = names.map(async name => await this.getPokemon(`https://pokeapi.co/api/v2/pokemon/${name}`))
 			resolve(await Promise.all(pokemons))
 		})

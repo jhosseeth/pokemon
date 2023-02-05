@@ -1,20 +1,22 @@
 <script setup>
-    import { ref, onMounted } from 'vue'
+    import { ref, onMounted, defineEmits } from 'vue'
     import pokeApi from '../services/PokeAPI'
 
     const search = ref()
     const names = ref()
+    const emit = defineEmits(['updatePokemons'])
 
     const onSearch = async () => {
         const searchValue = search.value.value
         const filteredNames = names.value.filter(name => name.includes(searchValue))
         const pokemons = await pokeApi.searchPokemons(filteredNames)
-        console.log('pokemons: ', pokemons)
+
+        emit('updatePokemons', pokemons)
     }
 
     const getAutocompleteOptions = () => {
         const data = names.value.reduce((accumulator, value) => {
-            return {...accumulator, [value]: null};
+            return { ...accumulator, [value]: null }
         }, {})
 
         return { data }
