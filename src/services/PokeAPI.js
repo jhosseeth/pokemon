@@ -14,12 +14,13 @@ const pokeAPI = {
 			})
 		})
 	},
-	getPokemons() {
+	getPokemons(url = 'https://pokeapi.co/api/v2/pokemon') {
+		console.log('getPokemons => ', url)
 		return new Promise((resolve, reject) => {
-			axios.get('https://pokeapi.co/api/v2/pokemon')
-		    .then(async response => {
-		        const pokemons = response.data.results.map(async item => await this.getPokemon(item.url))
-		        this.nextPokemons = response.data.next
+			axios.get(url)
+		    .then(async ({ data }) => {
+		        const pokemons = data.results.map(async item => await this.getPokemon(item.url))
+		        this.nextPokemons = data.next
 
 		        resolve(await Promise.all(pokemons))
 		    })
