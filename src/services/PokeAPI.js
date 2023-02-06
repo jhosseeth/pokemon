@@ -2,6 +2,7 @@ import axios from 'axios'
 
 const pokeAPI = {
 	nextPokemons: '',
+	loadedPokemons: [],
 	// Returns a single pokemon object
 	getPokemon(url) {
 		return new Promise((resolve, reject) => {
@@ -20,10 +21,13 @@ const pokeAPI = {
 		return new Promise((resolve, reject) => {
 			axios.get(url)
 		    .then(async ({ data }) => {
-		        const pokemons = data.results.map(async item => await this.getPokemon(item.url))
+		        const pokemonsData = data.results.map(async item => await this.getPokemon(item.url))
+		        const pokemons = await Promise.all(pokemonsData)
+		        
 		        this.nextPokemons = data.next
+		        this.loadedPokemons = [...this.loadedPokemons, ...pokemons]
 
-		        resolve(await Promise.all(pokemons))
+		        resolve(pokemons)
 		    })
 		    .catch(function (error) {
 		        console.error(error)

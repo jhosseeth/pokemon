@@ -3,16 +3,20 @@
     import pokeApi from '../services/PokeAPI'
     import Search from '../components/Search.vue'
 
+    const scrolls = []
     const pokemons = ref([])
-    const loading = ref(false)
     const content = ref()
+    const loading = ref(false)
+    const allowScroll = ref(true)
 
     const loadMore = async ({ target }) => {
-        const scrollHeight = target.scrollHeight
-        const scrollTop = target.scrollTop
-        const clientHeight = target.clientHeight
+        if (!allowScroll.value) return
 
-        if (scrollTop + clientHeight >= scrollHeight) {
+        const scrollHeight = target.scrollHeight
+        const scrollSum = target.scrollTop + target.clientHeight
+
+        if (!scrolls.includes(scrollSum) && scrollSum >= scrollHeight) {
+            scrolls.push(scrollSum) // To prevent repeat event
             const next = pokeApi.nextPokemons
             const results = await pokeApi.getPokemons(next)
             pokemons.value = [...pokemons.value, ...results]
@@ -20,7 +24,8 @@
     }
 
     const updatePokemons = data => {
-        pokemons.value = data
+        allowScroll.value = !data.isSearchResult
+        pokemons.value = data.pokemons
     }
 
     onMounted(async () => {

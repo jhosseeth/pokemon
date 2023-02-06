@@ -11,7 +11,17 @@
         const filteredNames = names.value.filter(name => name.includes(searchValue))
         const pokemons = await pokeApi.searchPokemons(filteredNames)
 
-        emit('updatePokemons', pokemons)
+        emit('updatePokemons', {
+            isSearchResult: true,
+            pokemons
+        })
+    }
+
+    const onReset = () => {
+        emit('updatePokemons', {
+            isSearchResult: false,
+            pokemons: pokeApi.loadedPokemons
+        })
     }
 
     const getAutocompleteOptions = () => {
@@ -42,7 +52,8 @@
                 <label for="autocomplete-input">Search</label>
             </div>
             <div class="col s2">
-                <button class="btn waves-effect waves-light">Search</button>
+                <input type="reset" value="reset" @click="onReset">
+                <input type="submit" value="submit">
             </div>
         </form>
     </div>
