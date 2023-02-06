@@ -23,8 +23,13 @@
 </script>
 
 <template>
-    <NavBar v-if="isLogged"/>
-    <RouterView />
+    <header>
+        <NavBar v-if="isLogged"/>
+    </header>
+
+    <div class="container">
+        <RouterView />
+    </div>
 </template>
 
 <style scoped>
