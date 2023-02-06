@@ -48,8 +48,27 @@
 
 <style scoped>
     main {
-        max-height: calc(100vh - (14rem + 8px + 48px));
+        margin: 0 auto;
         overflow: auto;
+        max-width: 95vw;
+        max-height: calc(100vh - (14rem + 8px + 48px));
+        scrollbar-color: #FFCE00 transparent;
+        scrollbar-width: thin;
+    }
+
+    main::-webkit-scrollbar {
+        width: 6px;
+        background-color: transparent;
+    }
+     
+    main::-webkit-scrollbar-track {
+        /*box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);*/
+        /*background-color: transparent;*/
+    }
+     
+    main::-webkit-scrollbar-thumb {
+        background-color: #FFCE00;
+        border-radius: 3px;
     }
 </style>
 
