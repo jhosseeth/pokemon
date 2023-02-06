@@ -12,13 +12,18 @@
 </script>
 
 <template>
-    <div class="favorites">
-        <h1>Favorites pokemons</h1>
+    <main class="container white-text">
+        <h3>Favorites pokemons</h3>
         <div class="row">
             <PokemonCard v-for="pokemon in pokemons" :pokemon="pokemon"/>
         </div>
-    </div>
+    </main>
 </template>
 
-<style>
+<style scoped>
+    .container h3 {
+        text-align: center;
+        margin-top: 5vh;
+        margin-bottom: 3vh;
+    }
 </style>

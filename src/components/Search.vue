@@ -56,11 +56,11 @@
                 <button type="reset" class="btn-reset btn-floating btn-small red darken-2" @click="onReset">
                     <i class="material-icons">close</i>
                 </button>
-                <input id="search" class="autocomplete" type="text" ref="search" autocomplete="off">
-                <label for="autocomplete-input">Search</label>
+                <input id="search" class="autocomplete white-text" type="text" ref="search" autocomplete="off">
+                <label for="search">Search Pokemon name</label>
             </div>
             <div class="col s4 btn-col">
-                <button class="btn btn-search" type="submit">
+                <button class="btn btn-search blue darken-3 waves-effect waves-light" type="submit">
                     <i class="material-icons left">search</i>
                     Search
                 </button>
