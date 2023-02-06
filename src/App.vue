@@ -27,9 +27,7 @@
         <NavBar v-if="isLogged"/>
     </header>
 
-    <div class="container">
-        <RouterView />
-    </div>
+    <RouterView />
 </template>
 
 <style scoped>

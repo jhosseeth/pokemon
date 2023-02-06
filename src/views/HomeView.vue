@@ -35,10 +35,10 @@
 </script>
 
 <template>
-    <main ref="content" @scroll="loadMore">
-        <Search @updatePokemons="updatePokemons"/>
+    <Search @updatePokemons="updatePokemons"/>
             
-        <div class="row">
+    <main ref="content" @scroll="loadMore">
+        <div class="container row">
             <PokemonCard v-for="pokemon in pokemons" :pokemon="pokemon"/>
         </div>
         
@@ -48,7 +48,7 @@
 
 <style scoped>
     main {
-        max-height: 90vh;
+        max-height: calc(100vh - (14rem + 8px + 48px));
         overflow: auto;
     }
 </style>
