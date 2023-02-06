@@ -1,6 +1,6 @@
 <script setup>
     import { ref, computed, onMounted, defineEmits } from 'vue'
-    import pokeApi from '../services/PokeAPI'
+    import pokeApi from '@/services/PokeAPI'
 
     const search = ref()
     const searchInput = ref()

@@ -1,7 +1,7 @@
 <script setup>
     import { ref, onMounted } from 'vue'
     import { useRouter, RouterView } from 'vue-router'
-    import NavBar from './components/NavBar.vue'
+    import NavBar from '@/components/NavBar.vue'
 
     if (!localStorage.getItem('isLogged')) localStorage.setItem('isLogged', false)
     if (!localStorage.getItem('favorites')) localStorage.setItem('favorites', '')

@@ -1,7 +1,7 @@
 <script setup>
     import { ref, onMounted } from 'vue'
-    import pokeApi from '../services/PokeAPI'
-    import PokemonCard from '../components/PokemonCard.vue'
+    import pokeApi from '@/services/PokeAPI'
+    import PokemonCard from '@/components/PokemonCard.vue'
 
     const pokemons = ref([])
     const favorites = localStorage.getItem('favorites').split(',')

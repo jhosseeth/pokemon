@@ -1,8 +1,8 @@
 <script setup>
     import { ref, onMounted } from 'vue'
-    import pokeApi from '../services/PokeAPI'
-    import Search from '../components/Search.vue'
-    import PokemonCard from '../components/PokemonCard.vue'
+    import pokeApi from '@/services/PokeAPI'
+    import Search from '@/components/Search.vue'
+    import PokemonCard from '@/components/PokemonCard.vue'
 
     const scrolls = []
     const pokemons = ref([])

@@ -1,8 +1,8 @@
 <script setup>
     import { ref, computed, onMounted } from 'vue'
     import { useRoute } from 'vue-router'
-    import pokeApi from '../services/PokeAPI'
-    import StatBar from '../components/StatBar.vue'
+    import pokeApi from '@/services/PokeAPI'
+    import StatBar from '@/components/StatBar.vue'
 
     const route = useRoute()
     const pokemon = ref({})

@@ -19,7 +19,7 @@
     <nav>
         <div class="nav-content">
             <a href="#" class="brand-logo left">
-                <img src="../assets/logo.png">
+                <img src="@/assets/logo.png">
             </a>
             <ul class="tabs tabs-transparent right" ref="tabs">
                 <li class="tab">
