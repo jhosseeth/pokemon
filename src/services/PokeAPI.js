@@ -11,7 +11,7 @@ const pokeAPI = {
 					id: data.id,
 					name: data.name,
 					type: data.types.map(item => item.type.name).join(', '),
-					img: data.sprites['front_default']
+					img: data.sprites.other.dream_world.front_default
 				})
 			})
 		})
@@ -28,7 +28,7 @@ const pokeAPI = {
 					weight: data.weight,
 					abilities: data.abilities.map(item => item.ability.name),
 					type: data.types.map(item => item.type.name),
-					img: data.sprites['front_default'],
+					img: data.sprites.other.dream_world.front_default,
 					stats: data.stats.map(item => {
 						return {
 							name: item.stat.name,

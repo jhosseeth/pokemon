@@ -38,7 +38,7 @@
     <Search @updatePokemons="updatePokemons"/>
             
     <main ref="content" @scroll="loadMore">
-        <div class="container row">
+        <div class="container grid">
             <PokemonCard v-for="pokemon in pokemons" :pokemon="pokemon"/>
         </div>
         
@@ -69,6 +69,11 @@
     main::-webkit-scrollbar-thumb {
         background-color: #FFCE00;
         border-radius: 3px;
+    }
+
+    .grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
     }
 </style>
 
