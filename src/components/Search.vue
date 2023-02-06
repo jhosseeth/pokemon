@@ -24,6 +24,9 @@
         })
     }
 
+    /* -------------------------------------- *\
+    *               AUTOCOMPLETE
+    \* -------------------------------------- */
     const getAutocompleteOptions = () => {
         const data = names.value.reduce((accumulator, value) => {
             return { ...accumulator, [value]: null }
@@ -32,15 +35,15 @@
         return { data }
     }
 
-    const setupAutocomplete = () => {
+    onMounted(async () => {
+        // Save all pokemon names
+        names.value = await pokeApi.getPokemonNames()
+
         const elem = search.value
         const optionsData = getAutocompleteOptions()
-        M.Autocomplete.init(elem, optionsData)
-    }
 
-    onMounted(async () => {
-        names.value = await pokeApi.getPokemonNames()
-        setupAutocomplete()
+        // Init Materialize autocomplete dropdown 
+        M.Autocomplete.init(elem, optionsData)
     })
 </script>
 
@@ -48,7 +51,7 @@
     <div class="search row">
         <form class="col s8 offset-s2" @submit.prevent="onSearch">
             <div class="input-field col s10">
-                <input id="search" class="autocomplete" type="text" ref="search">
+                <input id="search" class="autocomplete" type="text" ref="search" autocomplete="off">
                 <label for="autocomplete-input">Search</label>
             </div>
             <div class="col s2">

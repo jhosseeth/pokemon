@@ -1,11 +1,12 @@
 <script setup>
-    import { ref, computed, onMounted } from 'vue'
+    import { ref, onMounted } from 'vue'
     import { useRouter, RouterView } from 'vue-router'
     import NavBar from './components/NavBar.vue'
 
     if (!localStorage.getItem('isLogged')) localStorage.setItem('isLogged', false)
 
     const router = useRouter()
+
     const isLogged = ref(localStorage.getItem('isLogged') === 'true')
     if (!isLogged.value) router.push('login')
 

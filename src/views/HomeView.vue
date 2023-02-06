@@ -2,6 +2,7 @@
     import { ref, onMounted } from 'vue'
     import pokeApi from '../services/PokeAPI'
     import Search from '../components/Search.vue'
+    import PokemonCard from '../components/PokemonCard.vue'
 
     const scrolls = []
     const pokemons = ref([])
@@ -36,13 +37,11 @@
 <template>
     <main ref="content" @scroll="loadMore">
         <Search @updatePokemons="updatePokemons"/>
-
-        <ul>
-            <li v-for="pokemon in pokemons">
-                <img :src="pokemon.img">
-                {{ pokemon.name }}
-            </li>
-        </ul>
+            
+        <div class="row">
+            <PokemonCard v-for="pokemon in pokemons" :pokemon="pokemon"/>
+        </div>
+        
         <p v-if="loading">Loading...</p>
     </main>
 </template>

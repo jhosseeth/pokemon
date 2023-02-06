@@ -11,7 +11,7 @@
 
 <template>
     <header>
-        <RouterLink to="/">Home</RouterLink>
+        <RouterLink to="/home">Home</RouterLink>
         <RouterLink to="/favorites">Favorites</RouterLink>
         <a href="#" @click="logout">Logout</a>
     </header>

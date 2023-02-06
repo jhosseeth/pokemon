@@ -16,6 +16,16 @@ const pokeAPI = {
 			})
 		})
 	},
+	// Returns a single pokemon object by name
+	getPokemonDetails(name) {
+		return new Promise((resolve, reject) => {
+			axios.get(`https://pokeapi.co/api/v2/pokemon/${name}`)
+			.then(({ data }) => {
+				console.log('pokemon data: ', data)
+				resolve(data)
+			})
+		})
+	},
 	// Returns a list with object pokemons data
 	getPokemons(url = 'https://pokeapi.co/api/v2/pokemon') {
 		return new Promise((resolve, reject) => {
