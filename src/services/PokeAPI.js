@@ -21,8 +21,22 @@ const pokeAPI = {
 		return new Promise((resolve, reject) => {
 			axios.get(`https://pokeapi.co/api/v2/pokemon/${name}`)
 			.then(({ data }) => {
-				// console.log('pokemon data: ', data)
-				resolve(data)
+				console.log('pokemon data: ', data)
+				resolve({
+					id: data.id,
+					name: data.name,
+					height: data.height,
+					weight: data.weight,
+					abilities: data.abilities.map(item => item.ability.name),
+					type: data.types.map(item => item.type.name),
+					img: data.sprites['front_default'],
+					stats: data.stats.map(item => {
+						return {
+							name: item.stat.name,
+							stat: item['base_stat']
+						}
+					})
+				})
 			})
 		})
 	},
