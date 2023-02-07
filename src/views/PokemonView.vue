@@ -35,63 +35,72 @@
 
 <template>
     <div class="detail white-text container row">
-        <header class="col s10 offset-s1">
+        <aside class="col s4">
             <img :src="pokemon.img">
-            <h3>{{ pokemon.name }}</h3>
+        </aside>
 
-            <button v-if="!isFavorite" class="btn blue darken-3 waves-effect waves-light" @click="addToFavorites">
-                <i class="material-icons left">favorite</i>
-                Add to favorites
-            </button>
+        <section class="col s7 offset-s1">
+            <header>
+                <h3>{{ pokemon.name }}</h3>
+                <button v-if="!isFavorite" class="btn blue darken-3 waves-effect waves-light" @click="addToFavorites">
+                    <i class="material-icons left">favorite</i>
+                    Add to favorites
+                </button>
+                <button v-else class="btn blue darken-3 waves-effect waves-light" @click="removeFromFavorites">
+                    <i class="material-icons left">favorite_border</i>
+                    Remove from favorites
+                </button>
+            </header>
 
-            <button v-else class="btn blue darken-3 waves-effect waves-light" @click="removeFromFavorites">
-                <i class="material-icons left">favorite_border</i>
-                Remove from favorites
-            </button>
-        </header>
+            <main>
+                <dl class="col s6">
+                    <dt>Height</dt>
+                    <dd>{{ pokemon.height }}</dd>
 
-        <main class="col s10 offset-s1">
-            <dl class="col s6">
-                <dt>Height</dt>
-                <dd>{{ pokemon.height }}</dd>
+                    <dt>Type</dt>
+                    <dd v-for="type in pokemon.type">{{ type }}</dd>
+                </dl>
 
-                <dt>Type</dt>
-                <dd v-for="type in pokemon.type">{{ type }}</dd>
-            </dl>
+                <dl class="col s6">
+                    <dt>Weight</dt>
+                    <dd>{{ pokemon.weight }}</dd>
 
-            <dl class="col s6">
-                <dt>Weight</dt>
-                <dd>{{ pokemon.weight }}</dd>
+                    <dt>Abilities</dt>
+                    <dd v-for="ability in pokemon.abilities">{{ ability }}</dd>
+                </dl>
 
-                <dt>Abilities</dt>
-                <dd v-for="ability in pokemon.abilities">{{ ability }}</dd>
-            </dl>
-
-            <h5 class="col s12">Stats</h5>
-            <StatBar class="col s12" v-for="stat in pokemon.stats" :stat="stat"/>
-        </main>
-
+                <h5 class="col s12">Stats</h5>
+                <StatBar class="col s12" v-for="stat in pokemon.stats" :stat="stat"/>
+            </main>
+        </section>
     </div>
 </template>
 
 <style scoped>
     .detail {
         margin-top: 5vh;
+        font-family: 'Cairo Play';
+    }
+
+    .detail aside img {
+        display: block;
+        margin: 12vh auto 0;
+        width: 90%;
     }
 
     .detail header {
-        display: grid;
-        grid-template-columns: 100px 1fr 1fr;
-        align-items: end;
+        display: flex;
+        justify-content: space-between;
     }
 
     .detail header h3 {
+        margin: 0;
         text-transform: capitalize;
     }
 
     .detail header button {
-        justify-self: end;
-        margin-bottom: 25px;
+        align-self: end;
+        margin-bottom: .3rem;
         text-transform: none;
     }
 

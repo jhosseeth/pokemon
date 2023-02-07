@@ -61,11 +61,6 @@
         background-color: transparent;
     }
      
-    main::-webkit-scrollbar-track {
-        /*box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);*/
-        /*background-color: transparent;*/
-    }
-     
     main::-webkit-scrollbar-thumb {
         background-color: #FFCE00;
         border-radius: 3px;
