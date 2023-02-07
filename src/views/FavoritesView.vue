@@ -14,7 +14,7 @@
 <template>
     <main class="container white-text">
         <h3>Favorites pokemons</h3>
-        <div class="row">
+        <div class="grid">
             <PokemonCard v-for="pokemon in pokemons" :pokemon="pokemon"/>
         </div>
     </main>
@@ -25,5 +25,11 @@
         text-align: center;
         margin-top: 5vh;
         margin-bottom: 3vh;
+        font-family: 'Cairo Play';
+    }
+
+    .grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
     }
 </style>

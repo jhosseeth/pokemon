@@ -3,10 +3,12 @@
     import { useRoute } from 'vue-router'
     import pokeApi from '@/services/PokeAPI'
     import StatBar from '@/components/StatBar.vue'
+    import Loader from '@/components/Loader.vue'
 
     const route = useRoute()
     const pokemon = ref({})
     const favorites = ref([])
+    const isLoading = ref(true)
     const { name } = route.params
 
     const isFavorite = computed(() => favorites.value.includes(name))
@@ -30,10 +32,15 @@
     onMounted(async () => {
         updateFavorites()
         pokemon.value = await pokeApi.getPokemonDetails(name)
+
+        setTimeout(() => {
+            isLoading.value = false
+        }, 1000)
     })
 </script>
 
 <template>
+    <Loader v-if="isLoading"/>
     <div class="detail white-text container row">
         <aside class="col s4">
             <img :src="pokemon.img">

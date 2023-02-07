@@ -34,7 +34,6 @@
             </ul>
         </div>
     </nav>
-
 </template>
 
 <style scoped>
@@ -60,7 +59,7 @@
     }
 
     .tabs .tab a:focus, .tabs .tab a:focus.active {
-    background-color: rgba(255, 255, 255, 0.11);
-    outline: none;
-}
+        background-color: rgba(255, 255, 255, 0.11);
+        outline: none;
+    }
 </style>
